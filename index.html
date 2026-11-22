@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Impact Hub Lagos — The Critical Infrastructure for Nigeria's Innovation Economy</title>
+<meta name="description" content="Impact Hub Lagos: co-working, private offices, training rooms, conference rooms, an event hall, and the programmes, capital and community that turn local grit into global capital." />
+<style>
+  /* ---------- Fonts (local, extracted from the live site) ---------- */
+  @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/Poppins-latin-400.woff2') format('woff2');}
+  @font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/Poppins-latin-500.woff2') format('woff2');}
+  @font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/Poppins-latin-600.woff2') format('woff2');}
+  @font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/Poppins-latin-700.woff2') format('woff2');}
+
+  :root{
+    /* IHL brand */
+    --maroon:#812926;
+    --navy:#1c395c;
+    --ink:#0a1f38;
+    --orange:#f78a3c;
+    --orange-dark:#c96924;
+    --yellow:#ffd546;
+    --green:#7ebb55;
+    --green-dark:#67924b;
+    --teal:#41bed0;
+    --teal-dark:#1ea3b6;
+    --cream:#fef6ef;
+    --mist:#f0fafb;
+    --sage:#f5f9f1;
+    --grey:#edeff2;
+    --text:#1a1a1a;
+    --muted:#4a5565;
+    /* CcHUB design language */
+    --stage:#020202;
+    --pastel-pink:#e8c2e2;
+    --pastel-periwinkle:#c7ceea;
+    --pastel-peach:#ffdac0;
+    --pastel-apricot:#ffbc7d;
+    --pastel-butter:#fdf7c2;
+    --pastel-green:#61ce70;
+    --pastel-blue:#6ec1e4;
+    --pastel-aqua:#b7dfe4;
+    --pastel-coral:#ff9aa2;
+
+    --shadow:0 6px 0 var(--stage);
+    --shadow-lg:0 10px 0 var(--stage);
+    --border:2px solid var(--stage);
+    --radius:18px;
+    --radius-sm:12px;
+    --container:1140px;
+    --gutter:24px;
+    --sans:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01s !important;transition-duration:.01s !important}
+  }
+  body{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none}
+  ul{list-style:none}
+  :focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:8px}
+  ::selection{background:var(--yellow);color:var(--stage)}
+
+  skip-link{position:absolute;left:16px;top:-90px;background:var(--stage);color:var(--cream);padding:.75rem 1.2rem;border-radius:12px;z-index:200;transition:top .2s;font-weight:600}
+  skip-link:focus{top:16px}
+
+  .container{width:min(var(--container),92%);margin-inline:auto}
+
+  /* ---------- Header ---------- */
+  header.site{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:2px solid var(--stage);transition:background .3s,box-shadow .3s}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:74px;transition:height .3s}
+  header.site.scrolled{box-shadow:0 4px 0 rgba(2,2,2,.14)}
+  .brand{display:flex;align-items:center;gap:.7rem;flex:0 0 auto}
+  .brand img{height:40px;width:auto}
+  nav.links{display:flex;gap:1.7rem;align-items:center}
+  nav.links a{font-weight:600;font-size:.92rem;color:var(--ink);position:relative;padding:.35rem 0;transition:color .2s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--yellow);transition:width .25s;border-radius:2px}
+  nav.links a:hover::after{width:100%}
+  .nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--orange);color:var(--stage);font-weight:700;font-size:.92rem;padding:.72rem 1.45rem;border-radius:999px;border:var(--border);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+  .nav-cta:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--stage);background:var(--yellow)}
+  .burger{display:none;flex-direction:column;gap:6px;padding:.6rem;border-radius:10px}
+  .burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:transform .3s,opacity .3s}
+  .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:.25rem;background:#fff;border-bottom:2px solid var(--stage);padding:1rem 5% 1.3rem;box-shadow:var(--shadow-lg)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-weight:700;padding:.7rem .4rem;border-bottom:2px solid var(--grey);color:var(--ink)}
+  .mobile-menu a:last-of-type{border-bottom:none}
+  .mobile-menu .nav-cta{margin-top:.75rem;justify-content:center}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:var(--stage);color:#fff;overflow:hidden;background-image:url('assets/images/ihl-hero.jpg');background-size:cover;background-position:center 30%}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(2,2,2,.94) 0%,rgba(2,2,2,.86) 42%,rgba(2,2,2,.28) 100%)}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 420px at 88% 18%,rgba(255,213,70,.14),transparent 60%),radial-gradient(480px 380px at 6% 96%,rgba(65,190,208,.12),transparent 60%);pointer-events:none}
+  .hero .blob{position:absolute;border-radius:50%;z-index:1;opacity:.85;pointer-events:none}
+  .blob-a{width:150px;height:150px;top:64px;right:8%;background:var(--pastel-pink);border:var(--border);box-shadow:var(--shadow);opacity:.9;animation:drift 7s ease-in-out infinite}
+  .blob-b{width:56px;height:56px;top:236px;right:27%;background:var(--pastel-green);border:var(--border);box-shadow:var(--shadow);animation:drift 5s ease-in-out 1.2s infinite}
+  .blob-c{width:80px;height:80px;top:42%;right:6%;background:var(--pastel-aqua);border:var(--border);box-shadow:var(--shadow);animation:drift 9s ease-in-out .6s infinite}
+  @keyframes drift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(4deg)}}
+
+  .hero-inner{position:relative;z-index:2;padding:150px 0 0}
+  .hero .container{display:flex;flex-direction:column;align-items:flex-start}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--ink);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.1rem .55rem .8rem;border-radius:999px;border:var(--border);box-shadow:var(--shadow);margin-bottom:1.8rem}
+  .eyebrow .pulse{width:10px;height:10px;border-radius:50%;background:var(--green);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,187,85,.6)}50%{box-shadow:0 0 0 7px rgba(126,187,85,0)}}
+
+  .hero-pills{display:flex;flex-direction:column;align-items:flex-start;gap:1.35rem;margin-bottom:1.9rem}
+  .h-pill{display:inline-block;font-weight:700;font-size:clamp(2.35rem,5.4vw,4rem);line-height:1;letter-spacing:-.02em;color:var(--stage);padding:.35em 1.05em;border-radius:999px;border:var(--border);background:var(--yellow);box-shadow:var(--shadow-lg);transition:transform .25s,box-shadow .25s}
+  .h-pill:hover{transform:translate(-2px,-4px) rotate(-2deg) !important;box-shadow:0 16px 0 var(--stage)}
+  .h-pill.p2{background:var(--pastel-peach);transform:rotate(1.4deg)}
+  .h-pill.p3{background:var(--pastel-aqua);transform:rotate(-1.2deg)}
+  .h-pill:nth-child(1){transform:rotate(-1.6deg)}
+  .h-pill:nth-child(3){transform:rotate(-1.2deg)}
+
+  .hero-sub{font-size:clamp(1.02rem,1.4vw,1.2rem);line-height:1.6;color:rgba(255,255,255,.88);max-width:34rem;margin-bottom:1.7rem}
+  .hero-sub strong{color:var(--yellow);font-weight:700}
+  .btn-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+  .hbtn{display:inline-flex;align-items:center;gap:.65rem;font-weight:700;font-size:1rem;padding:1rem 1.7rem;border-radius:999px;border:var(--border);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,background .2s;letter-spacing:.01em}
+  .hbtn-y{background:var(--yellow);color:var(--stage)}
+  .hbtn-y:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);background:var(--pastel-butter)}
+  .hbtn-o{background:transparent;color:#fff;border-color:#fff;box-shadow:0 6px 0 rgba(255,255,255,.9)}
+  .hbtn-o:hover{transform:translateY(-4px);box-shadow:0 10px 0 rgba(255,255,255,.9);background:#fff;color:var(--stage)}
+
+  .hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid rgba(255,255,255,.16)}
+  .hstat{padding:1.5rem 1rem 1.7rem;border-right:2px solid rgba(255,255,255,.16);text-align:left}
+  .hstat:last-child{border-right:none}
+  .hstat b{display:block;font-size:clamp(1.45rem,2.3vw,2.1rem);font-weight:700;line-height:1.05;color:#fff}
+  .hstat b em{font-style:normal;color:var(--yellow)}
+  .hstat span{display:block;margin-top:.35rem;font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:5.6rem 0}
+  .sec-head{margin-bottom:2.7rem;max-width:46rem}
+  .sec-head .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:1rem}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.75rem);line-height:1.08;letter-spacing:-.02em;font-weight:700;color:var(--ink)}
+  .sec-head h2 .hl{background:var(--yellow);padding:.02em .22em;border-radius:.3em;box-decoration-break:clone;-webkit-box-decoration-break:clone;box-shadow:0 3px 0 var(--stage)}
+  .sec-head p{margin-top:.9rem;color:var(--muted);font-size:1.02rem}
+
+  /* ---------- Spaces ---------- */
+  .spaces{background:var(--cream)}
+  .spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+  .space-card{background:#fff;border:var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .28s,box-shadow .28s}
+  .space-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+  .space-card .img{position:relative;border-bottom:var(--border);overflow:hidden}
+  .space-card .img img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .55s}
+  .space-card:hover .img img{transform:scale(1.06)}
+  .space-card .tag{position:absolute;top:14px;left:14px;background:var(--pastel-butter);border:2px solid var(--stage);border-radius:999px;padding:.4rem .85rem;font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;box-shadow:0 3px 0 var(--stage)}
+  .space-card .body{padding:1.35rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+  .space-card h3{font-size:1.35rem;font-weight:700;line-height:1.25;color:var(--ink)}
+  .space-card p{font-size:.9rem;color:var(--muted);flex:1}
+  .price{font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .price small{font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:0}
+  .price-row{display:flex;align-items:baseline;gap:.55rem;margin-top:auto;padding-top:.9rem;border-top:2px dashed var(--grey)}
+  .more-spaces{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+  .more{background:#fff;border:var(--border);border-radius:var(--radius-sm);padding:1.1rem 1.15rem;box-shadow:0 5px 0 var(--stage);transition:transform .22s,box-shadow .22s;display:flex;flex-direction:column;gap:.3rem}
+  .more:hover{transform:translateY(-5px);box-shadow:0 9px 0 var(--stage)}
+  .more b{font-size:.95rem;color:var(--ink)}
+  .more small{color:var(--muted);font-size:.8rem}
+  .more .more-price{margin-top:.55rem;font-weight:700;color:var(--orange-dark);font-size:.95rem}
+  .fine-print{margin-top:1.25rem;font-size:.83rem;color:var(--muted)}
+  .fine-print a{text-decoration:underline;text-underline-offset:3px;font-weight:600;color:var(--maroon)}
+
+  /* ---------- Impact ---------- */
+  .impact{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .impact::before{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,213,70,.16),transparent 70%);pointer-events:none}
+  .impact::after{content:"";position:absolute;left:-140px;bottom:-140px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(65,190,208,.14),transparent 70%);pointer-events:none}
+  .impact .container{position:relative;z-index:1}
+  .impact .sec-head .tag{color:var(--yellow)}
+  .impact .sec-head h2{color:#fff}
+  .impact .sec-head h2 .hl{background:var(--maroon);box-shadow:0 3px 0 var(--stage);color:#fff}
+  .impact .sec-head p{color:rgba(255,255,255,.72)}
+  .impact-lede{font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.55;max-width:44rem;color:rgba(255,255,255,.88)}
+  .impact-lede strong{color:var(--yellow)}
+  .impact-lede cite{display:block;margin-top:.7rem;font-style:normal;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+  .counters{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.2rem 0 2.4rem}
+  .counter{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:1.35rem .8rem 1.3rem;text-align:center}
+  .counter .val{font-size:clamp(1.65rem,2.6vw,2.3rem);font-weight:700;line-height:1.1;color:#fff}
+  .counter .val em{font-style:normal;color:var(--yellow)}
+  .counter .lbl{margin-top:.45rem;font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:1.5}
+
+  .programmes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .prog{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;transition:transform .28s,background .28s,border-color .28s}
+  .prog:hover{transform:translateY(-7px);background:rgba(255,255,255,.1);border-color:rgba(255,213,70,.55)}
+  .prog .sdg{align-self:flex-start;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--stage);background:var(--pastel-green);padding:.38rem .8rem;border-radius:999px;margin-bottom:1rem}
+  .prog h3{font-size:1.35rem;font-weight:700;line-height:1.25;margin-bottom:.5rem}
+  .prog p{font-size:.9rem;color:rgba(255,255,255,.7);flex:1}
+  .prog .figure{margin-top:1.2rem;padding-top:1rem;border-top:2px dashed rgba(255,255,255,.16)}
+  .prog .figure b{font-size:1.4rem;font-weight:700;color:var(--yellow)}
+  .prog .figure span{display:block;margin-top:.2rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+  /* ---------- Report ---------- */
+  .report{background:var(--sage)}
+  .report-wrap{display:grid;grid-template-columns:300px 1fr;gap:3.2rem;align-items:center;background:#fff;border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:2.4rem;position:relative;overflow:hidden}
+  .report-wrap::after{content:"";position:absolute;left:-70px;bottom:-70px;width:220px;height:220px;border-radius:50%;background:var(--pastel-peach);border:var(--border);opacity:.7;pointer-events:none}
+  .cover{border-radius:14px;overflow:hidden;border:var(--border);box-shadow:var(--shadow);position:relative;z-index:1}
+  .cover img{width:100%;aspect-ratio:3/2.3;object-fit:cover;display:block}
+  .report-copy{position:relative;z-index:1}
+  .report-copy .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:.8rem}
+  .report-copy h2{font-size:clamp(1.55rem,2.3vw,2.05rem);line-height:1.14;letter-spacing:-.02em;color:var(--ink);font-weight:700;margin-bottom:.7rem}
+  .report-copy p.lead{color:var(--muted);max-width:38rem}
+  .report-copy ul{margin:1.3rem 0 1.6rem;display:grid;gap:.65rem;padding-left:0}
+  .report-copy li{display:flex;gap:.65rem;align-items:flex-start;font-size:.94rem;color:var(--text);line-height:1.5}
+  .report-copy li b{font-weight:700}
+  .check{flex:0 0 auto;width:22px;height:22px;background:var(--green);border:2px solid var(--stage);border-radius:50%;display:grid;place-items:center;margin-top:.1rem}
+
+  /* ---------- Network ---------- */
+  .network{background:#fff}
+  .network-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3.4rem;align-items:center}
+  .network h2{font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:1.1;letter-spacing:-.02em;color:var(--ink);font-weight:700}
+  .network h2 .hl{background:var(--pastel-periwinkle);padding:.02em .22em;border-radius:.3em;box-decoration-break:clone;-webkit-box-decoration-break:clone;box-shadow:0 3px 0 var(--stage)}
+  .network p{margin-top:1rem;color:var(--muted);max-width:36rem}
+  .network-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.7rem}
+  .net-stat{background:var(--mist);border:var(--border);border-radius:var(--radius-sm);padding:1.25rem .8rem;box-shadow:var(--shadow);text-align:center}
+  .net-stat b{display:block;font-size:1.65rem;font-weight:700;line-height:1.05;color:var(--ink);letter-spacing:-.01em}
+  .net-stat span{display:block;margin-top:.35rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .timeline{display:flex;align-items:center;gap:.55rem;margin-top:1.7rem;flex-wrap:wrap}
+  .tl-item{display:flex;align-items:center;gap:.55rem}
+  .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--green);border:2px solid var(--stage);box-shadow:0 3px 0 var(--stage)}
+  .tl-item.soon .tl-dot{background:#fff;box-shadow:0 3px 0 rgba(2,2,2,.3)}
+  .tl-label{font-weight:700;font-size:.92rem;color:var(--ink)}
+  .tl-item.soon .tl-label{color:var(--muted);font-weight:600}
+  .tl-arrow{color:var(--muted);font-weight:700}
+
+  /* ---------- Partners ---------- */
+  .partners{background:var(--mist)}
+  .partners .sec-head{margin-bottom:2.2rem}
+  .partners-grid{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center}
+  .partner{display:flex;align-items:center;gap:.5rem;background:#fff;border:var(--border);border-radius:999px;padding:.5rem 1.15rem;box-shadow:0 4px 0 var(--stage);transition:transform .22s,box-shadow .22s;max-width:100%}
+  .partner:hover{transform:translateY(-4px);box-shadow:0 8px 0 var(--stage)}
+  .partner img{height:26px;width:auto;display:block;filter:grayscale(.15);transition:filter .2s,transform .2s}
+  .partner:hover img{filter:grayscale(0);transform:scale(1.08)}
+  .partner:nth-child(even) img{height:24px}
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{background:var(--stage);color:#fff;position:relative;overflow:hidden}
+  .newsletter::before{content:"";position:absolute;left:50%;top:-160px;transform:translateX(-50%);width:820px;height:360px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,213,70,.2),transparent 65%);pointer-events:none}
+  .newsletter-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .newsletter .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem}
+  .newsletter h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.08;letter-spacing:-.02em;font-weight:700;color:#fff}
+  .newsletter h2 .hl{background:var(--pastel-butter);color:var(--stage);padding:0 .18em;border-radius:.25em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .newsletter p.sub{margin-top:1rem;color:rgba(255,255,255,.74);max-width:28rem}
+  .news-form{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.24);border-radius:var(--radius);padding:1.5rem;display:grid;gap:.85rem}
+  .field{display:grid;gap:.35rem}
+  .field label{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+  .field input,.field select{font-family:var(--sans);font-size:.95rem;color:#fff;background:rgba(2,2,2,.5);border:2px solid rgba(255,255,255,.25);border-radius:10px;padding:.78rem .95rem;width:100%;transition:border-color .2s}
+  .field input::placeholder{color:rgba(255,255,255,.42)}
+  .field input:focus,.field select:focus{border-color:var(--yellow);outline:none}
+  .field select option{color:var(--ink)}
+  .consent{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem;color:rgba(255,255,255,.68);line-height:1.5}
+  .consent input{margin-top:.2rem;width:17px;height:17px;accent-color:var(--yellow);flex:0 0 auto}
+  .news-form .btn{justify-content:center;margin-top:.3rem}
+  .form-note{font-size:.72rem;color:rgba(255,255,255,.45);text-align:center}
+
+  /* ---------- Buttons (shared) ---------- */
+  .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:.98rem;padding:1rem 1.65rem;border-radius:999px;border:var(--border);box-shadow:var(--shadow);background:#fff;color:var(--stage);transition:transform .2s,box-shadow .2s,background .2s;letter-spacing:.01em}
+  .btn:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .btn-y{background:var(--yellow);color:var(--stage)}
+  .btn-y:hover{background:var(--pastel-butter)}
+  .btn-orange{background:var(--orange);color:var(--stage)}
+  .btn-orange:hover{background:var(--pastel-peach)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55);box-shadow:0 6px 0 rgba(255,255,255,.35)}
+  .btn-ghost:hover{background:#fff;color:var(--stage)}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--ink);color:rgba(255,255,255,.75);padding:4.4rem 0 2rem;border-top:2px solid var(--stage)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.3fr;gap:2.6rem;padding-bottom:2.6rem;border-bottom:2px solid rgba(255,255,255,.14)}
+  .foot-brand img{height:46px;width:auto}
+  .foot-brand p{margin-top:1rem;font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.6);max-width:19rem}
+  .foot-col h4{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.05rem;font-weight:700}
+  .foot-col a,.foot-col span{display:block;padding:.3rem 0;font-size:.9rem;color:rgba(255,255,255,.68);transition:color .2s}
+  .foot-col a:hover{color:var(--yellow)}
+  .socials{display:flex;gap:.7rem}
+  .socials a{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:background .2s,transform .2s,border-color .2s}
+  .socials a:hover{background:var(--yellow);border-color:var(--yellow);transform:translateY(-4px)}
+  .socials a:hover svg,.socials a:hover svg *{fill:var(--stage);stroke:var(--stage)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1.4rem;padding-top:1.7rem;flex-wrap:wrap}
+  .foot-bottom small{font-size:.78rem;color:rgba(255,255,255,.5)}
+  .foot-bottom .lang{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.65)}
+
+  /* ---------- To top ---------- */
+  .to-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:var(--yellow);border:var(--border);box-shadow:var(--shadow);display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(16px);transition:opacity .3s,transform .3s;z-index:90}
+  .to-top.show{opacity:1;pointer-events:auto;transform:none}
+  .to-top:hover{transform:translateY(-4px)}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero-stats{grid-template-columns:repeat(3,1fr)}
+    .hstat{border-bottom:2px solid rgba(255,255,255,.16)}
+    .hstat:nth-child(4),.hstat:nth-child(5){border-bottom:none}
+    .hstat:nth-child(2n){border-right:none}
+    .hstat:nth-child(3),.hstat:nth-child(4){border-right:2px solid rgba(255,255,255,.16)}
+    .hstat:nth-child(5){border-right:none}
+    .spaces-grid{grid-template-columns:1fr 1fr}
+    .more-spaces{grid-template-columns:1fr 1fr}
+    .counters{grid-template-columns:repeat(2,1fr)}
+    .programmes{grid-template-columns:1fr 1fr}
+    .report-wrap{grid-template-columns:1fr;gap:2rem}
+    .cover{max-width:280px;margin-inline:auto;width:100%}
+    .network-grid{grid-template-columns:1fr}
+    .newsletter-grid{grid-template-columns:1fr;gap:2.2rem}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    nav.links,.nav-cta{display:none}
+    .burger{display:flex}
+    .h-pill{font-size:clamp(2.4rem,11.5vw,3.2rem)}
+    .hero-inner{padding-top:120px}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .hstat:nth-child(2n){border-right:none}
+    .hstat:nth-child(3),.hstat:nth-child(5){border-right:2px solid rgba(255,255,255,.16)}
+    .hstat:nth-child(n+3){border-bottom:2px solid rgba(255,255,255,.16)}
+    .hstat:nth-child(5){border-bottom:none}
+    .spaces-grid,.more-spaces,.programmes,.counters{grid-template-columns:1fr}
+    .network-stats{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .blob-a{right:-40px}
+    .blob-b{right:36%;top:190px}
+    .blob-c{right:4%}
+    .hero-sub{font-size:.98rem}
+    section.block{padding:4rem 0}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ Header ============ -->
+<header class="site" id="siteHeader">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Impact Hub Lagos — home">
+      <img src="assets/logos/ihl-logo-red.png" alt="Impact Hub Lagos" height="40" />
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#spaces">Spaces</a>
+      <a href="#impact">Impact</a>
+      <a href="#reports">Report</a>
+      <a href="#network">Network</a>
+      <a href="#partners">Partners</a>
+    </nav>
+    <a class="nav-cta" href="#newsletter">Book a visit →</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#spaces">Spaces</a>
+    <a href="#impact">Impact</a>
+    <a href="#reports">Report</a>
+    <a href="#network">Network</a>
+    <a href="#partners">Partners</a>
+    <a href="#newsletter">Join us</a>
+    <a class="nav-cta" href="#newsletter">Book a visit →</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ Hero ============ -->
+<section class="hero" id="top">
+  <span class="blob blob-a"></span>
+  <span class="blob blob-b"></span>
+  <span class="blob blob-c"></span>
+  <div class="hero-inner">
+    <div class="container">
+      <span class="eyebrow"><span class="pulse"></span>22 Glover Road · Ikoyi</span>
+      <div class="hero-pills">
+        <span class="h-pill p1">Inspire.</span>
+        <span class="h-pill p2">Connect.</span>
+        <span class="h-pill p3">Enable.</span>
+      </div>
+      <p class="hero-sub">Impact Hub Lagos provides the <strong>critical infrastructure</strong> for Nigeria&rsquo;s innovation economy — spaces to work, meet and grow, plus the programmes, capital and community that turn local grit into global capital.</p>
+      <div class="btn-row">
+        <a class="hbtn hbtn-y" href="#spaces">Explore our spaces <span aria-hidden="true">→</span></a>
+        <a class="hbtn hbtn-o" href="#impact">See our impact</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><b>2,000<em>+</em></b><span>sqm of spaces</span></div>
+    <div class="hstat"><b>$10.5<em>M+</em></b><span>Funding mobilised</span></div>
+    <div class="hstat"><b>1,200<em>+</em></b><span>Jobs created</span></div>
+    <div class="hstat"><b>2,600<em>+</em></b><span>Startups reached</span></div>
+    <div class="hstat"><b>55<em>%</em></b><span>Female founders</span></div>
+  </div>
+</section>
+
+<!-- ============ Spaces ============ -->
+<section class="block spaces" id="spaces">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">Workspace · Community</span>
+      <h2>Space to work, meet <span class="hl">&amp; grow</span></h2>
+      <p>From a day at a hot desk to a private office or a full event hall — choose the space that fits how you work. Every membership includes WiFi and a place in the community.</p>
+    </div>
+
+    <div class="spaces-grid">
+      <article class="space-card reveal">
+        <div class="img">
+          <span class="tag">01 · Day Pass</span>
+          <img src="assets/images/ihl-home-space.jpg" alt="Lounge area with seating for day-pass members at Impact Hub Lagos" loading="lazy" />
+        </div>
+        <div class="body">
+          <h3>Day Pass</h3>
+          <p>Drop in for a day at a shared hot desk, with WiFi and access to the Impact Hub Lagos community.</p>
+          <div class="price-row"><span class="price">₦20,000</span><span class="price" style="font-size:.8rem;font-weight:500;color:var(--muted)">per day</span></div>
+        </div>
+      </article>
+
+      <article class="space-card reveal">
+        <div class="img">
+          <span class="tag">02 · Co-working</span>
+          <img src="assets/images/ihl-home-coworking.jpg" alt="Shared co-working floor with long desks and black mesh chairs" loading="lazy" />
+        </div>
+        <div class="body">
+          <h3>Co-working</h3>
+          <p>Shared desk, WiFi, hot-desk hours, printing allowance and community membership. From Hub 25 at 25 hours per month.</p>
+          <div class="price-row"><span class="price">₦60,000</span><span class="price" style="font-size:.8rem;font-weight:500;color:var(--muted)">/ mo · Hub 25 · 25 hrs</span></div>
+        </div>
+      </article>
+
+      <article class="space-card reveal">
+        <div class="img">
+          <span class="tag">03 · Private Office</span>
+          <img src="assets/images/ihl-card-work.jpg" alt="A founder in conversation in the Impact Hub Lagos co-working space" loading="lazy" />
+        </div>
+        <div class="body">
+          <h3>Private Office</h3>
+          <p>An enclosed, fixed space for your team — WiFi, printing allowance and discounts on hot desks, rooms and events.</p>
+          <div class="price-row"><span class="price">₦430,000</span><span class="price" style="font-size:.8rem;font-weight:500;color:var(--muted)">/ mo · 1 person</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="more-spaces">
+      <div class="more reveal"><b>Virtual Office</b><small>Professional address in Ikoyi, mail handling</small><span class="more-price">₦90,000 / quarter · ₦360,000 / yr</span></div>
+      <div class="more reveal"><b>Training Room</b><small>Workshops &amp; cohort sessions, half or full day</small><span class="more-price">Members save 5–30%</span></div>
+      <div class="more reveal"><b>Conference Room</b><small>Team sessions, boards &amp; client conversations</small><span class="more-price">Members save 5–30%</span></div>
+      <div class="more reveal"><b>Event Hall</b><small>Launches, conferences &amp; demo days</small><span class="more-price">Members save 5–40%</span></div>
+    </div>
+
+    <p class="fine-print reveal">All prices exclusive of VAT. For room and event-hall rates, <a href="#newsletter">contact us</a>. Compare full membership tiers (Hub 25 / 50 / 100 / Unlimited) at the link →</p>
+  </div>
+</section>
+
+<!-- ============ Impact ============ -->
+<section class="block impact" id="impact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="tag">Our Impact</span>
+      <h2>Five years of <span class="hl">catalysing growth</span></h2>
+      <p>Between 2020 and 2025, Impact Hub Lagos moved from inspiring spaces to the infrastructure powering Nigeria&rsquo;s innovation economy.</p>
+    </div>
+
+    <p class="impact-lede reveal">
+      &ldquo;Innovation doesn&rsquo;t happen in a vacuum. It requires space, capital and a collision of brilliant minds. We haven&rsquo;t just hosted the ecosystem — <strong>we built its underlying infrastructure.</strong>&rdquo;
+      <cite>— The Manifesto, 2020–2025 Impact Report</cite>
+    </p>
+
+    <div class="counters">
+      <div class="counter reveal"><div class="val">$<span data-count="10.5" data-decimals="1">0</span><em>M+</em></div><div class="lbl">External funding mobilised</div></div>
+      <div class="counter reveal"><div class="val"><span data-count="1200" data-format="comma">0</span><em>+</em></div><div class="lbl">Jobs created</div></div>
+      <div class="counter reveal"><div class="val"><span data-count="2600" data-format="comma">0</span><em>+</em></div><div class="lbl">Startups &amp; ventures reached</div></div>
+      <div class="counter reveal"><div class="val">$<span data-count="3.5" data-decimals="1">0</span><em>M+</em></div><div class="lbl">Value delivered</div></div>
+    </div>
+
+    <div class="programmes">
+      <article class="prog reveal">
+        <span class="sdg">SDG 5 · Women&rsquo;s Entrepreneurship</span>
+        <h3>SHEPitch</h3>
+        <p>Coaching, mentorship and grants for women founders — launched in 2025 as our flagship International Women&rsquo;s Day initiative.</p>
+        <div class="figure"><b>10 founders</b><span>5 coached · 3 grant recipients · 170+ participants</span></div>
+      </article>
+      <article class="prog reveal">
+        <span class="sdg" style="background:var(--pastel-aqua)">SDG 5 &amp; 10 · Inclusion</span>
+        <h3>We Can Work Academy</h3>
+        <p>Inclusive employment and skills development for persons with disabilities across Nigeria.</p>
+        <div class="figure"><b>265 beneficiaries</b><span>26 facilitators · 28 personal assistants</span></div>
+      </article>
+      <article class="prog reveal">
+        <span class="sdg" style="background:var(--pastel-orange, #f78a3c)">SDG 12 &amp; 13 · Climate</span>
+        <h3>Africa Climate Finance Day</h3>
+        <p>Mobilising climate finance and partnerships for early-stage green ventures, formalising state-level green innovation.</p>
+        <div class="figure"><b>$3.5M in climate finance</b><span>Mobilised across the programme</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Report ============ -->
+<section class="block report" id="reports">
+  <div class="container">
+    <div class="report-wrap reveal">
+      <div class="cover">
+        <img src="assets/images/ihl-report-cover.jpg" alt="Cover of the Impact Hub Lagos 2020 to 2025 Impact Report, Deepening roots, expanding horizons" loading="lazy" />
+      </div>
+      <div class="report-copy">
+        <span class="tag">New · 2020–2025 Impact Report</span>
+        <h2>Deepening roots,<br/>expanding horizons</h2>
+        <p class="lead">Five years of catalysing growth: <b>$10.5M+ in external funding mobilised, 2,600+ startups and ventures reached and 1,200+ jobs created</b> — as Impact Hub Lagos grew into the critical infrastructure powering Nigeria&rsquo;s innovation economy.</p>
+        <ul>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.2l2.6 2.6L10 3.4" stroke="#0a1f38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span>Five years of funding, jobs, ventures and value delivered — from iPad to institutional.</span></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.2l2.6 2.6L10 3.4" stroke="#0a1f38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span>Three focus areas: regenerative economy, democratising access, ecosystem enablement.</span></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.2l2.6 2.6L10 3.4" stroke="#0a1f38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span><span>The IHL Deal Platform — a live, vetted digital venture marketplace at <b>impactdeals.ai</b>.</span></li>
+        </ul>
+        <div class="btn-row" style="margin-bottom:0">
+          <a class="btn btn-y" href="#reports">Read the report →</a>
+          <a class="btn" href="#impact" style="background:var(--ink);color:#fff;border-color:var(--stage)">Explore our impact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Network ============ -->
+<section class="block network" id="network">
+  <div class="container network-grid">
+    <div class="reveal">
+      <span class="tag">Global Impact Hub Network</span>
+      <h2>A global advantage for <span class="hl">local brilliance</span></h2>
+      <p>We are a member of the Impact Hub Global Network — a rapidly expanding, diverse global collective accelerating sustainable innovation at scale. Our multi-hub strategy takes Lagos to Ibadan, and beyond.</p>
+      <div class="timeline" aria-label="City rollout">
+        <div class="tl-item"><span class="tl-dot"></span><span class="tl-label">Lagos · live</span></div>
+        <span class="tl-arrow">→</span>
+        <div class="tl-item soon"><span class="tl-dot"></span><span class="tl-label">Ibadan · soon</span></div>
+        <span class="tl-arrow">→</span>
+        <div class="tl-item soon"><span class="tl-dot"></span><span class="tl-label">Beyond</span></div>
+      </div>
+    </div>
+    <div class="network-stats reveal">
+      <div class="net-stat"><b>500,000+</b><span>Impact Makers</span></div>
+      <div class="net-stat"><b>120+</b><span>Impact Hubs worldwide</span></div>
+      <div class="net-stat"><b>70+</b><span>Countries</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Partners ============ -->
+<section class="block partners" id="partners">
+  <div class="container">
+    <div class="sec-head reveal" style="text-align:center;max-width:38rem;margin-inline:auto">
+      <span class="tag">Our partners in change</span>
+      <h2>Organisations we&rsquo;ve <span class="hl">worked with</span></h2>
+    </div>
+    <div class="partners-grid reveal">
+      <span class="partner"><img src="assets/partners/unicef.svg" alt="UNICEF" /></span>
+      <span class="partner"><img src="assets/partners/undp.jpg" alt="UNDP" /></span>
+      <span class="partner"><img src="assets/partners/giz.jpg" alt="GIZ" /></span>
+      <span class="partner"><img src="assets/partners/eu.svg" alt="European Union" /></span>
+      <span class="partner"><img src="assets/partners/mastercard-foundation.jpg" alt="Mastercard Foundation" /></span>
+      <span class="partner"><img src="assets/partners/us-embassy.svg" alt="U.S. Embassy" /></span>
+      <span class="partner"><img src="assets/partners/french-republic.svg" alt="French Republic" /></span>
+      <span class="partner"><img src="assets/partners/siemens.svg" alt="Siemens" /></span>
+      <span class="partner"><img src="assets/partners/visa.svg" alt="Visa" /></span>
+      <span class="partner"><img src="assets/partners/bayer-foundation.svg" alt="Bayer Foundation" /></span>
+      <span class="partner"><img src="assets/partners/cisco.svg" alt="Cisco" /></span>
+      <span class="partner"><img src="assets/partners/gitex-nigeria.png" alt="GITEX Nigeria" /></span>
+      <span class="partner"><img src="assets/partners/oracle-for-startups.jpg" alt="Oracle for Startups" /></span>
+      <span class="partner"><img src="assets/partners/lagos-state-employment-trust-fund.jpg" alt="Lagos State Employment Trust Fund" /></span>
+      <span class="partner"><img src="assets/partners/lasrisc.jpg" alt="LASRISC" /></span>
+      <span class="partner"><img src="assets/partners/afri-labs.jpg" alt="AfriLabs" /></span>
+      <span class="partner"><img src="assets/partners/google-for-startups.jpg" alt="Google for Startups" /></span>
+      <span class="partner"><img src="assets/partners/austrian-development-agency.jpg" alt="Austrian Development Agency" /></span>
+      <span class="partner"><img src="assets/partners/acumen.jpg" alt="Acumen" /></span>
+      <span class="partner"><img src="assets/partners/54-collective.png" alt="54 Collective" /></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Newsletter ============ -->
+<section class="block newsletter" id="newsletter">
+  <div class="container newsletter-grid">
+    <div class="reveal">
+      <span class="tag">Newsletter</span>
+      <h2>Impact in <span class="hl">your inbox</span></h2>
+      <p class="sub">Programmes, events, opportunities, community updates and stories from Impact Hub Lagos — in one email, no more.</p>
+    </div>
+    <form class="news-form reveal" id="newsForm" aria-label="Newsletter signup">
+      <div class="field"><label for="nlName">Name</label><input id="nlName" type="text" placeholder="Your name" required /></div>
+      <div class="field"><label for="nlEmail">Email</label><input id="nlEmail" type="email" placeholder="you@example.com" required /></div>
+      <div class="field">
+        <label for="nlRole">I am an impact-maker…</label>
+        <select id="nlRole" required>
+          <option value="" selected disabled>Choose one</option>
+          <option>Student</option><option>Entrepreneur</option><option>Corporation</option><option>Public institution</option><option>Investor</option><option>Other</option>
+        </select>
+      </div>
+      <label class="consent" for="nlConsent">
+        <input id="nlConsent" type="checkbox" required />
+        <span>Yes, I agree with the Impact Hub Lagos Privacy Policy and would like to receive updates.</span>
+      </label>
+      <button class="btn btn-y" type="submit">Subscribe →</button>
+      <p class="form-note" id="formStatus" role="status" aria-live="polite">No arithmetic quiz, just honest consent. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logos/ihl-logo-white.png" alt="Impact Hub Lagos" />
+        <p>22 Glover Road, Ikoyi, Lagos State, Nigeria. Book a visit, work in our spaces, or join the community powering Nigeria&rsquo;s innovation economy.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#spaces">Spaces &amp; memberships</a>
+        <a href="#impact">Our programmes</a>
+        <a href="#reports">Impact reports</a>
+        <a href="#network">Global network</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <span>hello@impacthub.net</span>
+        <span>+234 1 000 0000</span>
+        <span>22 Glover Road, Ikoyi</span>
+        <span>Lagos, Nigeria</span>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v15h-4zM8 8h3.8v2.2h.1c.5-1 1.8-2.2 3.7-2.2 4 0 4.8 2.6 4.8 6V23h-4v-7.9c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V23H8z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.25 2.25H8.08l4.713 6.231zM17.083 19.77h1.833L7.015 4.126H5.076z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff" stroke="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M23.5 7.2s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C17.3 4.1 12 4.1 12 4.1s-5.3 0-8.6.2c-.4.1-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S.5 9.1.5 11.1v1.9c0 2 .2 3.9.2 3.9s.2 1.5.8 2.1c.8.8 1.8.7 2.3.8 1.7.2 6.9.3 6.9.3s5.3 0 8.6-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.9.2-3.9v-1.9c0-2-.2-3.9-.2-3.9zM9.8 15.3V8.9l6.2 3.2-6.2 3.2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="year">2026</span> Impact Hub Lagos · 22 Glover Road, Ikoyi, Lagos. All prices excl. VAT.</small>
+      <span class="lang">English · Global network available in 10 languages</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1f38" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+  var header = document.getElementById("siteHeader");
+  var burger = document.getElementById("burger");
+  var mobileMenu = document.getElementById("mobileMenu");
+  var toTop = document.getElementById("toTop");
+
+  function onScroll(){
+    header.classList.toggle("scrolled", window.scrollY > 20);
+    toTop.classList.toggle("show", window.scrollY > 620);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  burger.addEventListener("click", function(){
+    var open = mobileMenu.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mobileMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      mobileMenu.classList.remove("open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded","false");
+    });
+  });
+
+  toTop.addEventListener("click", function(){ window.scrollTo({ top:0, behavior:"smooth" }); });
+
+  // Reveal on scroll
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  // Counters
+  var counters = document.querySelectorAll("[data-count]");
+  function render(el, val, dec, fmt){
+    if (fmt === "comma"){ el.textContent = Math.round(val).toLocaleString("en-US"); }
+    else if (dec > 0){ el.textContent = val.toFixed(dec); }
+    else { el.textContent = Math.round(val).toString(); }
+  }
+  if ("IntersectionObserver" in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target;
+        var target = parseFloat(el.getAttribute("data-count"));
+        var dec = parseInt(el.getAttribute("data-decimals") || "0", 10);
+        var fmt = el.getAttribute("data-format");
+        var dur = 1300, start = null;
+        function step(ts){
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          render(el, target * eased, dec, fmt);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.35 });
+    counters.forEach(function(c){ cio.observe(c); });
+  } else {
+    counters.forEach(function(c){
+      render(c, parseFloat(c.getAttribute("data-count")), parseInt(c.getAttribute("data-decimals") || "0", 10), c.getAttribute("data-format"));
+    });
+  }
+
+  // Newsletter (mock)
+  var form = document.getElementById("newsForm");
+  var status = document.getElementById("formStatus");
+  if (form){
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      status.textContent = "Thank you — you're subscribed. Watch your inbox for the next edition.";
+      status.style.color = "#9fd8a5";
+    });
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
